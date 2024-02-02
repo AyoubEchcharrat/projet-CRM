@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("commandes")
+@RequestMapping("api/commandes")
 public class OrderController {
 
     @Autowired
@@ -36,7 +36,10 @@ public class OrderController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> update(@RequestBody Order order){
+    public ResponseEntity<String> update(@PathVariable("id") Integer id,@RequestBody Order order){
+        if(!id.equals(order.getId())){
+            return ResponseEntity.badRequest().body("Une erreur s'est produite. (IDs différents)");
+        }
         orderService.update(order);
         return ResponseEntity.status(HttpStatus.CREATED).body("Modification de la commande enregistrée.");
     }

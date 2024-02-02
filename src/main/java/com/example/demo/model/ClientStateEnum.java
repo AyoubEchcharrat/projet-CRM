@@ -1,5 +1,5 @@
 package com.example.demo.model;
 
 public enum ClientStateEnum {
-    ACTIVE,INACTIVE
+    INACTIVE,ACTIVE
 }

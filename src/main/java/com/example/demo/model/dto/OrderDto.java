@@ -1,34 +1,19 @@
-package com.example.demo.model;
+package com.example.demo.model.dto;
 
-import jakarta.persistence.*;
+import com.example.demo.model.Client;
+import com.example.demo.model.OrderStateEnum;
 
-@Entity
-@Table(name = "orders")
-public class Order {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class OrderDto {
+
     private Integer id;
-    @Column(name = "type_presta")
     private String typePresta;
     private String designation;
-    @ManyToOne
-    @JoinColumn(name = "client_id")
     private Client client;
-    @Column(name = "nb_days")
     private Short nbDays;
-    @Column(name = "unit_price")
     private int unitPrice;
-    @Column(name = "total_exclude_taxe")
-    @Transient
     private int totalExcludeTaxe;
-    @Column(name = "total_with_taxe")
-    @Transient
     private int totalWithTaxe;
-    @Column(columnDefinition = "int4")
     private OrderStateEnum state;
-
-    public Order() {
-    }
 
     public Integer getId() {
         return id;
@@ -78,15 +63,6 @@ public class Order {
         this.unitPrice = unitPrice;
     }
 
-
-    public OrderStateEnum getState() {
-        return state;
-    }
-
-    public void setState(OrderStateEnum state) {
-        this.state = state;
-    }
-
     public int getTotalExcludeTaxe() {
         return totalExcludeTaxe;
     }
@@ -101,5 +77,13 @@ public class Order {
 
     public void setTotalWithTaxe(int totalWithTaxe) {
         this.totalWithTaxe = totalWithTaxe;
+    }
+
+    public OrderStateEnum getState() {
+        return state;
+    }
+
+    public void setState(OrderStateEnum state) {
+        this.state = state;
     }
 }

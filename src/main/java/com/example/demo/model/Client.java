@@ -21,23 +21,12 @@ public class Client {
     private String zipCode;
     private String city;
     private String country;
-    private int state;
+    @Column(columnDefinition = "int4")
+    private ClientStateEnum state;
 
     public Client() {
     }
 
-    public Client(String companyName, String firstName, String lastName, String email, String phone, String address, String zipCode, String city, String country, int state) {
-        this.companyName = companyName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.address = address;
-        this.zipCode = zipCode;
-        this.city = city;
-        this.country = country;
-        this.state = state;
-    }
 
     public Integer getId() {
         return id;
@@ -119,11 +108,11 @@ public class Client {
         this.country = country;
     }
 
-    public int getState() {
+    public ClientStateEnum getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(ClientStateEnum state) {
         this.state = state;
     }
 }
